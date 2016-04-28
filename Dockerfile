@@ -1,6 +1,10 @@
 FROM docker/whalesay:latest
 
+MAINTAINER Marivi Pelaez
+
 RUN apt-get -y update && apt-get install -y fortunes
 
-CMD /usr/games/fortune -a | cowsay
+COPY entrypoint.sh /
+
+ENTRYPOINT ["/entrypoint.sh"]
 
