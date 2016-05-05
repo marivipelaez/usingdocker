@@ -74,3 +74,12 @@ $ docker run -e "ENV=DEV" -p 5000:5000 identidock
 The exec command is used inside cmd.sh script in order to avoid creating a new process, which ensures any signals (such as SIGTERM) are recieved by our uwsgi process rather than being swallowed by the parent process.
 
 Now, running with -e "ENV=DEV" starts a development server; otherwise, we get a production server.
+
+=== Use docker-compose ===
+After generating the YAML files with the corresponding configurations:
+
+```shell
+$ docker-compose up
+$ docker-compose -f docker-compose-prod.yml up -d
+```
+
