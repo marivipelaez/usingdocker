@@ -30,3 +30,19 @@ Hello world!
 * Source folder cannot be a soft link inside /Users/mvpa, because /Users is directly shared with docker vm.
 * Edit app/identidock.py and validate that it automatically changes running ```sh curl $(docker-machine ip default):5000``` again.
 
+
+=== Using uWSGI ===
+
+Add uWSGI configuration in Dockerfile and:
+
+```shell
+$ docker stop [CONTAINER_ID]
+$ docker rm [CONTAINER_ID]
+$ docker build -t identidock .
+$ docker run -d -p 9090:9090 -p 9191:9191 -v /Users/mvpa/usingdocker/identidock/app:/app identidock
+$ curl $(docker-machine ip default):9090
+Hello world!
+$ curl $(docker-machine ip default):9191:9191
+[uwsgi stats]
+```
+
