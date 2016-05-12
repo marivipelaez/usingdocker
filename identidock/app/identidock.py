@@ -1,4 +1,4 @@
-from flask import Flask, Response, request
+from flask import Flask, Response, request, render_template
 import requests
 import hashlib
 import redis
@@ -21,18 +21,7 @@ def mainpage():
 
     name_hash = hashlib.sha256(salted_name.encode()).hexdigest()
 
-    header = '<html><head><title>Identidock</title></head><body>'
-    body = '''<form method="POST">
-              Hello <input type="text" name="name" value="{0}">
-              <input type="submit" value="submit">
-              </form>
-              <p>You look like a:
-              <img src="/monster/{1}"/>
-              '''.format(name, name_hash)
-
-    footer = '</body></html>'
-
-    return header + body + footer
+    return render_template('index.html', name=name, name_hash=name_hash)
 
 
 @app.route('/monster/<name>')
