@@ -83,3 +83,6 @@ $ docker-compose up
 $ docker-compose -f docker-compose-prod.yml up -d
 ```
 
+== Simple web app ==
+
+* Identicon: develop a basic web service that generates an icon for a user based on a hash of her IP or her username.
