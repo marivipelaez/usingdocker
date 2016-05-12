@@ -86,3 +86,18 @@ $ docker-compose -f docker-compose-prod.yml up -d
 == Simple web app ==
 
 * Identicon: develop a basic web service that generates an icon for a user based on a hash of her IP or her username.
+* Run the app directly with docker:
+
+```shell
+$ docker build -t identidock .
+$ docker run -d --name dnmonster amouat/dnmonster:1.0
+$ docker run -d -p 5000:5000 -e "ENV=DEV" --link dnmonster:dnmonster identidock
+```
+* If using pycharm, after updating requirements.txt, restart your IDE.
+* Stop all the containers, remove them, and start them again.
+* After adding links in docker-compose file run:
+
+```shell
+$ docker-compose build
+$ docker-compose up -d
+```
