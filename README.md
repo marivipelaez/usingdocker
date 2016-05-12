@@ -1,10 +1,12 @@
-= Giving a try to docker =
+# Giving a try to docker
 
 [Using docker book](https://www.safaribooksonline.com/library/view/using-docker)
+
 My first [docker repository](https://hub.docker.com/r/vpelalo/docker-whale)
+
 Also following this very basic [docker tutorial](https://docs.docker.com/mac)
 
-== Hello world ==
+## Hello world
 
 ```shell
 $ cd identidock
@@ -15,7 +17,7 @@ Hello world!
 ```
 
 
-=== Mounting code directory inside the container ===
+## Mounting code directory inside the container
 
 ```shell
 $ docker stop [CONTAINER_ID]
@@ -31,7 +33,7 @@ Hello world!
 * Edit app/identidock.py and validate that it automatically changes running ```sh curl $(docker-machine ip default):5000``` again.
 
 
-=== Using uWSGI ===
+### Using uWSGI
 
 Add uWSGI configuration in Dockerfile and:
 
@@ -46,7 +48,7 @@ $ curl $(docker-machine ip default):9191:9191
 [uwsgi stats]
 ```
 
-==== Run uwsgi with a dedicated user ====
+### Run uwsgi with a dedicated user
 
 ```shell
 $ docker build -t identidock .
@@ -61,7 +63,7 @@ $ curl $(docker-machine ip default):32769
 Hello world!
 ```
 
-=== Add a script to choose environment ===
+### Add a script to choose environment
 
 * Our script will be a shell script. After editing it, make it executable and modify your Dockerfile to use it, before building the image:
 
@@ -75,7 +77,7 @@ The exec command is used inside cmd.sh script in order to avoid creating a new p
 
 Now, running with -e "ENV=DEV" starts a development server; otherwise, we get a production server.
 
-=== Use docker-compose ===
+### Use docker-compose
 After generating the YAML files with the corresponding configurations:
 
 ```shell
@@ -83,7 +85,7 @@ $ docker-compose up
 $ docker-compose -f docker-compose-prod.yml up -d
 ```
 
-== Simple web app ==
+## Simple web app
 
 * Identicon: develop a basic web service that generates an icon for a user based on a hash of her IP or her username.
 * Run the app directly with docker:
@@ -98,6 +100,10 @@ $ docker run -d -p 5000:5000 -e "ENV=DEV" --link dnmonster:dnmonster identidock
 * After adding links in docker-compose file run:
 
 ```shell
+$ docker-compse stop
 $ docker-compose build
 $ docker-compose up -d
 ```
+
+This is developed following microservices architecture
+
