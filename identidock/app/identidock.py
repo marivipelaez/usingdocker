@@ -16,7 +16,6 @@ def mainpage():
 
     if request.method == 'POST':
         name = request.form['name']
-
     salted_name = salt + name
 
     name_hash = hashlib.sha256(salted_name.encode()).hexdigest()
