@@ -107,3 +107,17 @@ $ docker-compose up -d
 
 This is developed following microservices architecture
 
+### Unit testing and continuous integration
+
+```shell
+$ docker build -t identidock .
+$ docker run identidock python tests.py
+$ mkdir ../identijenk; vim Dockerfile
+$ ...
+$ docker build -t identijenk .
+$ docker run -v /var/run/docker.sock:/var/run/docker.sock identijenk sudo docker ps # check if docker is running
+$ docker run --name jenkins-data identijenk echo "Jenkins Data Container" # After configuring jenkins and its plugins
+$ docker run -d --name jenkins -p 8080:8080 --volumes-from jenkins-data -v /var/run/docker.sock:/var/run/docker.sock identijenk
+```
+
+Then, open in your browser: http://192.168.99.100:8080/
