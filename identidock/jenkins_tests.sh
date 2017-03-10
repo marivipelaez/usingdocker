@@ -29,7 +29,6 @@ if [ $ERR -eq 0 ]; then
     #sudo docker login -e <your-docker-email> -u <your-docker-id> -p <your-docker-pass>
     #sudo docker push amouat/identidock:$HASH 4
     #sudo docker push amouat/identidock:newest 4
-
   else
     echo "Site returned " $CODE
     ERR=1
